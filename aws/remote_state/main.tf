@@ -1,4 +1,11 @@
 terraform {
+  backend "s3" {
+    bucket      = "626037834880-terraform-states"
+    key         = "dev/terraform.tfstate"
+    region      = "us-west-2"
+    encrypt     = true
+    dynamodb_table = "terraform-lock"
+  }
 
   required_providers {
     aws = {
@@ -17,7 +24,7 @@ terraform {
     instance_type = "t2.micro"
 
     tags = {
-       Name = "Terraform_demo"
+       Name = "Terraform_demo_1"
     }
   }
 
